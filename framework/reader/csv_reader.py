@@ -23,12 +23,12 @@ class CSVReader(BaseReader):
         assert full_path[-4:] == ".csv", "Not a .csv file"
         return full_path
 
-    def read(self):
-        spark: SparkSession = (
-            SparkSession.builder.appName("technical_assessment")
-            .enableHiveSupport()
-            .getOrCreate()
-        )
+    def read(self, spark):
+            # spark: SparkSession = (
+            #     SparkSession.builder.appName("technical_assessment")
+            #     .enableHiveSupport()
+            #     .getOrCreate()
+            # )
 
         df = (
             spark.read.format(self.format)

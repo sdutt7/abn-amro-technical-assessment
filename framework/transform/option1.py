@@ -17,8 +17,8 @@ class TransformOption1(BaseTransform):
 
     def transform(self, df2: DataFrame):
         df1 = self.df.filter(f.col("area") == "IT")
-        join_df = df1.join(df2, on=["id"], how="inner").orderBy(f.col("sales_amount").desc())
+        join_df = df1.join(df2, on=["id"], how="inner").orderBy(
+            f.col("sales_amount").desc()
+        )
 
         return join_df
-
-
