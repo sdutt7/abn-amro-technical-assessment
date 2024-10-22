@@ -24,6 +24,6 @@ class CSVWriter(BaseWriter):
 
     def write(self):
         df = self.df.limit(100)
-        df.write.option("delimiter", self.delimiter).options(
+        df.coalesce(1).write.option("delimiter", self.delimiter).options(
             **self.additional_params
         ).mode(self.mode).csv(self.full_path)
