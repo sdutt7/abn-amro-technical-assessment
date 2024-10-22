@@ -17,14 +17,18 @@ class TransformOption6(BaseTransform):
         return df
 
     def transform(self, df2: DataFrame):
+        df1 = self.df.withColumnRenamed("id", "caller_id")
 
-        join_df = self.df.alias("df1").join(df2, (self.df.id == df2.called_id), how="inner")
+        agg_df = df2.groupBy(*["country", "caller_id"]).agg(
+            f.sum("quantity").alias("quantity")
+        )
+        join_df = df1.join(agg_df, on=["caller_id"], how="inner")
 
-        window_spec = Window.partitionBy(*["country"]).orderBy(f.col("sales_amount").desc())
+        window_spec = Window.partitionBy(*["country"]).orderBy(f.col("quantity").desc())
         target_df = (
             join_df.withColumn("rank", f.rank().over(window_spec))
             .filter(f.col("rank") == 1)
-            .select("country", "id", "name", "sales_amount")
+            .select("country", f.col("caller_id").alias("id"), "name", "quantity")
         )
 
         return target_df
