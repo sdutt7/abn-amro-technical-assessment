@@ -18,7 +18,7 @@ class TransformOption5(BaseTransform):
 
     def transform(self, df2: DataFrame):
         df2 = df2.filter(f.col("country") == "Netherlands")
-        join_df = self.df.join(df2, on=["id"], how="inner")
+        join_df = self.df.join(df2, (self.df.id == df2.called_id), how="inner")
 
         agg_df = join_df.groupBy(*["area", "product_sold"]).agg(
             f.sum("quantity").alias("quantity")

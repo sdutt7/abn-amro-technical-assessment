@@ -18,7 +18,7 @@ class TransformOption6(BaseTransform):
 
     def transform(self, df2: DataFrame):
 
-        join_df = self.df.join(df2, on=["id"], how="inner")
+        join_df = self.df.alias("df1").join(df2, (self.df.id == df2.called_id), how="inner")
 
         window_spec = Window.partitionBy(*["country"]).orderBy(f.col("sales_amount").desc())
         target_df = (
