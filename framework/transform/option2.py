@@ -21,6 +21,6 @@ class TransformOption2(BaseTransform):
 
         df = join_df.withColumn(
             "zip_code", f.trim(f.split_part(f.col("address"), f.lit(","), f.lit(-2)))
-        )
+        ).select(*["address", "zip_code"])
 
         return df
