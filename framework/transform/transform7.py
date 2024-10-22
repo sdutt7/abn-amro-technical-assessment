@@ -8,7 +8,7 @@ from typing import Optional, Any
 from pyspark.sql.window import Window
 
 
-class TransformOption7(BaseTransform):
+class Transform7(BaseTransform):
     @validator("df", allow_reuse=True, always=True, check_fields=False)
     def dataframe_validator(cls, df):
         assert isinstance(
