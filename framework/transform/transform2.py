@@ -7,7 +7,7 @@ import pyspark.sql.functions as f
 from typing import Optional, Any
 
 
-class TransformOption2(BaseTransform):
+class Transform2(BaseTransform):
     @validator("df", allow_reuse=True, always=True, check_fields=False)
     def dataframe_validator(cls, df):
         assert isinstance(
