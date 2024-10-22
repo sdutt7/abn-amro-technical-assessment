@@ -28,16 +28,18 @@ def main():
         .enableHiveSupport()
         .getOrCreate()
     )
-    parser = argparse.ArgumentParser(description="Process different outputs based on input arguments.")
+    parser = argparse.ArgumentParser(
+        description="Process different outputs based on input arguments."
+    )
 
     # Define the arguments (one for each task)
-    parser.add_argument('--dataset_one_path', type=str, help='Process IT Data')
-    parser.add_argument('--dataset_two_path', type=str, help='Process IT Data')
-    parser.add_argument('--dataset_three_path', type=str, help='Process IT Data')
+    parser.add_argument("--dataset_one_path", type=str, help="Process IT Data")
+    parser.add_argument("--dataset_two_path", type=str, help="Process IT Data")
+    parser.add_argument("--dataset_three_path", type=str, help="Process IT Data")
 
-    parser.add_argument('--transform_name', type=str, help='Process IT Data')
+    parser.add_argument("--transform_name", type=str, help="Process IT Data")
 
-    parser.add_argument('--target_path', type=str, help='Process IT Data')
+    parser.add_argument("--target_path", type=str, help="Process IT Data")
 
     # Parse the arguments
     args = parser.parse_args()
@@ -65,7 +67,10 @@ def main():
     else:
         raise ValueError("Incorrect transformation name provided")
 
-    CSVWriter(df=df, full_path=args.target_path, ).write()
+    CSVWriter(
+        df=df,
+        full_path=args.target_path,
+    ).write()
 
 
 if __name__ == "__main__":
