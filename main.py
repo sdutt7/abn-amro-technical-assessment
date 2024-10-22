@@ -13,13 +13,13 @@ from framework.transform.transform6 import Transform6
 from framework.transform.transform7 import Transform7
 from framework.transform.transform8 import Transform8
 
-
 from pyspark.sql import SparkSession
 
 
 def read_source_file(spark, source_path):
     df = CSVReader(full_path=source_path).read(spark)
     return df
+
 
 # Main function to parse arguments and execute corresponding functions
 def main():
@@ -38,7 +38,6 @@ def main():
     parser.add_argument('--transform_name', type=str, help='Process IT Data')
 
     parser.add_argument('--target_path', type=str, help='Process IT Data')
-
 
     # Parse the arguments
     args = parser.parse_args()
@@ -66,7 +65,8 @@ def main():
     else:
         raise ValueError("Incorrect transformation name provided")
 
-    CSVWriter(df=df, full_path=args.target_path).write()
+    CSVWriter(df=df, full_path=args.target_path, ).write()
+
 
 if __name__ == "__main__":
     main()

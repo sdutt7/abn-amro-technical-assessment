@@ -12,7 +12,7 @@ class CSVWriter(BaseWriter):
         100, description="Write only limited number of rows"
     )
     additional_params: Optional[Dict[str, str]] = Field(
-        {}, description="additional parameters to be passed to the reader"
+        {"header": True}, description="additional parameters to be passed to the reader"
     )
 
     @validator("df", allow_reuse=True, always=True, check_fields=False)
