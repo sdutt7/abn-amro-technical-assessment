@@ -24,11 +24,11 @@ class CSVReader(BaseReader):
         return full_path
 
     def read(self, spark):
-            # spark: SparkSession = (
-            #     SparkSession.builder.appName("technical_assessment")
-            #     .enableHiveSupport()
-            #     .getOrCreate()
-            # )
+        # spark: SparkSession = (
+        #     SparkSession.builder.appName("technical_assessment")
+        #     .enableHiveSupport()
+        #     .getOrCreate()
+        # )
 
         df = (
             spark.read.format(self.format)

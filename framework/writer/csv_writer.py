@@ -8,7 +8,9 @@ from pyspark.sql import DataFrame
 
 class CSVWriter(BaseWriter):
     format: str = "csv"
-    limit_rows : Optional[int] = Field(100, description="Write only limited number of rows")
+    limit_rows: Optional[int] = Field(
+        100, description="Write only limited number of rows"
+    )
     additional_params: Optional[Dict[str, str]] = Field(
         {}, description="additional parameters to be passed to the reader"
     )
@@ -22,7 +24,6 @@ class CSVWriter(BaseWriter):
 
     def write(self):
         df = self.df.limit(100)
-        print(df.count())
         df.write.option("delimiter", self.delimiter).options(
             **self.additional_params
         ).mode(self.mode).csv(self.full_path)
