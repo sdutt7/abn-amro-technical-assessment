@@ -52,8 +52,9 @@ def test_transform3():
     expected_df = spark.createDataFrame(
         expected_data,
         schema=[
-            "address",
-            "zip_code"
+            "area",
+            "sales_amount",
+            "total_percentage"
         ],
     )
     assert_df_equality(actual_df, expected_df)
