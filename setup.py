@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="cingest",
+    name="abn_amro_test",
     version="0.0.1",
     packages=[
         "framework",
