@@ -14,5 +14,5 @@ setup(
     license="",
     author="Sumanta Dutta",
     author_email="sumanta.dutta2012@gmail.com",
-    description="ABN Amrp technical assignment package",
+    description="ABN Amro technical assignment package",
 )
