@@ -10,7 +10,7 @@ spark: SparkSession = (
 
 
 def test_transform1():
-    source_data1 =  [
+    source_data1 = [
         (1, "IT", 120, 100),
         (2, "IT", 100, 80),
         (3, "Marketing", 90, 60),
@@ -44,12 +44,12 @@ def test_transform1():
     actual_df = Transform1(df=df1).transform(df2)
 
     expected_data = [
-        (10, 'IT', 220, 200, 'Eve White', '012 Street', 2300),
-        (8, 'IT', 180, 150, 'Lucy Blue', '890 Street', 2200),
-        (4, 'IT', 200, 180, 'Alice Grey', '456 Street', 2100),
-        (2, 'IT', 100, 80, 'Jane Smith', '234 Street', 1800),
-        (6, 'IT', 110, 90, 'Emily Green', '678 Street', 1600),
-        (1, 'IT', 120, 100, 'John Doe', '123 Street', 1500)
+        (10, "IT", 220, 200, "Eve White", "012 Street", 2300),
+        (8, "IT", 180, 150, "Lucy Blue", "890 Street", 2200),
+        (4, "IT", 200, 180, "Alice Grey", "456 Street", 2100),
+        (2, "IT", 100, 80, "Jane Smith", "234 Street", 1800),
+        (6, "IT", 110, 90, "Emily Green", "678 Street", 1600),
+        (1, "IT", 120, 100, "John Doe", "123 Street", 1500),
     ]
 
     expected_df = spark.createDataFrame(
@@ -65,5 +65,6 @@ def test_transform1():
         ],
     )
     assert_df_equality(actual_df, expected_df)
+
 
 test_transform1()

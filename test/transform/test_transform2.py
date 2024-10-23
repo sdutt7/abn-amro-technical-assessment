@@ -10,7 +10,7 @@ spark: SparkSession = (
 
 
 def test_transform2():
-    source_data1 =  [
+    source_data1 = [
         (1, "IT", 120, 100),
         (2, "IT", 100, 80),
         (3, "Marketing", 90, 60),
@@ -43,18 +43,13 @@ def test_transform2():
 
     actual_df = Transform2(df=df1).transform(df2)
 
-    expected_data = [
-        ("345 XY, Street", '345 XY'),
-        ("789 BV, Street", '789 BV')
-    ]
+    expected_data = [("345 XY, Street", "345 XY"), ("789 BV, Street", "789 BV")]
 
     expected_df = spark.createDataFrame(
         expected_data,
-        schema=[
-            "address",
-            "zip_code"
-        ],
+        schema=["address", "zip_code"],
     )
     assert_df_equality(actual_df, expected_df)
+
 
 test_transform2()

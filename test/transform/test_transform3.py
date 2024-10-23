@@ -46,17 +46,14 @@ def test_transform3():
     expected_data = [
         ("IT", 11500, 0.8602150537634409),
         ("Marketing", 1700, 0.6875),
-        ("Sales", 3000, 0.8064516129032258)
+        ("Sales", 3000, 0.8064516129032258),
     ]
 
     expected_df = spark.createDataFrame(
         expected_data,
-        schema=[
-            "area",
-            "sales_amount",
-            "total_percentage"
-        ],
+        schema=["area", "sales_amount", "total_percentage"],
     )
     assert_df_equality(actual_df, expected_df, ignore_row_order=True)
+
 
 test_transform3()
