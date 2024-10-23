@@ -27,7 +27,7 @@ class Transform4(BaseTransform):
                 "total_percentage", f.col("calls_successful") / f.col("calls_made")
             )
             .withColumn("rank", f.rank().over(window_spec))
-            .filter(f.col("rank") <= 3)
+            .filter((f.col("rank") <= 3) & (f.col("total_percentage") > 0.75))
             .select("area", "name", "total_percentage", "sales_amount")
             .orderBy(f.col("area").desc(), f.col("total_percentage").desc())
         )
