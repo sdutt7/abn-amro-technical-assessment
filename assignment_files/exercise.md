@@ -102,3 +102,12 @@ The management team wants to reward it's best employees with a bonus and therefo
 - Please derive other two insights from the three datasets that you find interesting. Either create new datasets in **CSV** or if you prefer create some graphs.
 
 - Please save them as **extra_insight_one** and **extra_insight_two** directories and if you create a dataset you must use PySpark to save only to one **CSV** file.
+
+### Extra Bonus: Output #7 - **Which age group of recipient has the highest number of quantity ordered per department**
+
+- The output directory should be called **most_order_age_group** and you must use PySpark to save only to one **CSV** file.
+
+### Extra Bonus: Output #8 - **Top 3 companies those have placed the most order quantity per department**
+
+- The output directory should be called **top_3_most_order_company_by_dept** and you must use PySpark to save only to one **CSV** file.
+
