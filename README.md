@@ -164,6 +164,10 @@ python3 main.py --dataset_one_path /assignment_files/dataset_one.csv
 
 Unit Test Cases are added inside test/transform utilizing **chispa** Pyspark Test Helper. 
 
+## Build and Release
+
+This application  have an automated build pipeline using GitHub Actions that releases PyPI package to PyPi repository
+
 ## Contact
 Release details can be found here: https://pypi.org/project/abn-amro-assessment-2024/
 
