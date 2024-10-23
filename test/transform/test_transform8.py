@@ -1,6 +1,7 @@
 from chispa.dataframe_comparer import *
 from pyspark.sql import SparkSession
-from framework.transform.transform5 import Transform5
+from framework.transform.transform8 import Transform8
+from pyspark.sql.types import StructType, StructField, StringType, LongType
 
 spark: SparkSession = (
     SparkSession.builder.appName("test_technical_assessment")
@@ -9,7 +10,7 @@ spark: SparkSession = (
 )
 
 
-def test_transform5():
+def test_transform8():
     source_data1 = [
         (1, "IT", 120, 100),
         (2, "IT", 100, 80),
@@ -24,6 +25,22 @@ def test_transform5():
     ]
     df1 = spark.createDataFrame(
         source_data1, schema=["id", "area", "calls_made", "calls_successful"]
+    )
+
+    source_data2 = [
+        (1, "John Doe", "123 AB, Street", 1500),
+        (2, "Jane Smith", "234 CD,  Street", 1800),
+        (3, "Bob Brown", "345 XY, Street", 900),
+        (4, "Alice Grey", "456 HZ,  Street", 2100),
+        (5, "Mark White", "567 NN,  Street", 1300),
+        (6, "Emily Green", "678 BB, Street", 1600),
+        (7, "Joe Black", "789 BV, Street", 800),
+        (8, "Lucy Blue", "890 MN, Street", 2200),
+        (9, "Matt Pink", "901 WQ, Street", 1700),
+        (10, "Eve White", "012 AS, Street", 2300),
+    ]
+    df2 = spark.createDataFrame(
+        source_data2, schema=["id", "name", "address", "sales_amount"]
     )
 
     # Define the data
@@ -65,22 +82,29 @@ def test_transform5():
         ],
     )
 
-    actual_df = Transform5(df=df1).transform(df3)
+    actual_df = Transform8(df=df1).transform(df2=df2, df3=df3)
 
     expected_data = [
-        ("IT", "Billboard", 31),
-        ("Sales", "Printer", 41),
+        ("Sales", "Brizee BV", 41),
+        ("Sales", "Textor KG", 14),
+        ("Sales", "Demuynck-Vrancken CV", 9),
+        ("Marketing", "Buysse-Van Dessel VOF", 48),
+        ("Marketing", "Claessens, Verfaillie en Dewulf CommV", 48),
+        ("Marketing", "Martens VOF", 37),
+        ("IT", "Verbruggen-Vermeulen CommV", 50),
+        ("IT", "Heremans VOF", 36),
+        ("IT", "Ardagh Group", 31),
     ]
 
     expected_df = spark.createDataFrame(
         expected_data,
         schema=[
             "area",
-            "product_sold",
+            "company",
             "quantity",
         ],
     )
     assert_df_equality(actual_df, expected_df, ignore_row_order=True)
 
 
-test_transform5()
+test_transform8()

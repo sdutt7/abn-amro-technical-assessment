@@ -9,7 +9,7 @@ spark: SparkSession = (
 )
 
 
-def test_transform3():
+def test_transform4():
     source_data1 = [
         (1, "IT", 120, 100),
         (2, "IT", 100, 80),
@@ -63,4 +63,4 @@ def test_transform3():
     assert_df_equality(actual_df, expected_df, ignore_row_order=True)
 
 
-test_transform3()
+test_transform4()
