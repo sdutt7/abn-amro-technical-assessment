@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="abn-amro-assessment-2024",
-    version="0.0.1",
+    version="0.0.5",
     packages=[
         "framework",
         "framework.base",
