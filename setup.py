@@ -4,7 +4,7 @@ with open("requirements.txt") as f:
     required = f.read().splitlines()
 
 setup(
-    name="abn_amro_test",
+    name="abn-amro-assessment-2024",
     version="0.0.1",
     packages=[
         "framework",
