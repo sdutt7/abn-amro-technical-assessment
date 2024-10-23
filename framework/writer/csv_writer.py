@@ -14,6 +14,7 @@ class CSVWriter(BaseWriter):
     with options to specify additional parameters like delimiter and write mode. The class ensures that the DataFrame
     being written is valid and can be saved in CSV format.
     """
+
     format: str = "csv"
     additional_params: Optional[Dict[str, str]] = Field(
         {"header": True}, description="additional parameters to be passed to the reader"

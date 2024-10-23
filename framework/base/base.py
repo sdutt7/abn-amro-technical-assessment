@@ -12,6 +12,7 @@ class BaseReader(BaseModel):
     This class defines the structure for data readers, ensuring that derived classes implement the `read` method.
     It also provides attributes to hold essential information about the file being read, such as its path and format.
     """
+
     full_path: str = Field(..., description="full path to the file with filename")
     format: str = Field(..., description="format of the file to be read")
 
@@ -40,6 +41,7 @@ class BaseWriter(BaseModel):
     It holds attributes like the DataFrame to be written, the destination file path, format, mode (overwrite/append),
     and delimiter to be used when writing the file.
     """
+
     df: Any = Field(..., description="Dataframe to be written")
     full_path: str = Field(..., description="full path to the file with filename")
     format: str = Field(..., description="format of the file to be write")
@@ -72,6 +74,7 @@ class BaseTransform(BaseModel):
     This class provides a template for data transformations, ensuring that derived classes implement the
     `transform` method. It holds the source DataFrame to be transformed.
     """
+
     df: Any = Field(..., description="source dataframe")
 
     @abstractmethod

@@ -14,6 +14,7 @@ class CSVReader(BaseReader):
     parameters that can be passed to the reader.
 
     """
+
     format: str = "csv"
     header_option: Optional[bool] = Field(
         True, description="Whether to select header as first row"
